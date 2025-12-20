@@ -1,13 +1,50 @@
 changelog:
+  exclude:
+    labels:
+      - ignore-for-release
+      - duplicate
+      - invalid
+      - wontfix
+    authors:
+      - dependabot
   categories:
-    - title: "Breaking changes"
+    - title: "🚨 Breaking Changes"
       labels:
-        - breaking changes
+        - breaking-change
+        - breaking
     
-    - title: "New features"
+    - title: "🎉 New Features"
       labels:
         - feature
-
-    - title: "Other changes"
+        - enhancement
+    
+    - title: "🐛 Bug Fixes"
+      labels:
+        - bug
+        - bugfix
+        - fix
+    
+    - title: "📚 Documentation"
+      labels:
+        - documentation
+        - docs
+    
+    - title: "🔧 Maintenance"
+      labels:
+        - maintenance
+        - refactor
+        - cleanup
+    
+    - title: "⬆️ Dependencies"
+      labels:
+        - dependencies
+        - deps
+    
+    - title: "🔄 CI/CD"
+      labels:
+        - ci
+        - github-actions
+    
+    - title: "Other Changes"
       labels:
         - "*"
