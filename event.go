@@ -44,10 +44,11 @@ var registeredInterfaceProviders = map[string]EventInterfaceProvider{}
 // registerInterfaceProvider registers a provider so that DiscordGo can
 // access it's New() method.
 func registerInterfaceProvider(eh EventInterfaceProvider) {
-	if _, ok := registeredInterfaceProviders[eh.Type()]; ok {
+	if _, exists := registeredInterfaceProviders[eh.Type()]; exists {
 		// XXX:
 		// if we should error here, we need to do something with it.
 		// fmt.Errorf("event %s already registered", eh.Type())
+		return
 	}
 	registeredInterfaceProviders[eh.Type()] = eh
 }

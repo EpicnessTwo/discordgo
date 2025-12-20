@@ -1580,7 +1580,7 @@ func (s *Session) GuildTemplateCreate(guildID string, data *GuildTemplateParams,
 		return
 	}
 
-	err = unmarshal(body, &st)
+	_ = unmarshal(body, &st)
 	return
 }
 

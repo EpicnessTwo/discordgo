@@ -177,8 +177,9 @@ func (s *State) GuildRemove(guild *Guild) error {
 
 // Guild gets a guild by ID.
 // Useful for querying if @me is in a guild:
-//    _, err := discordgo.Session.State.Guild(guildID)
-//	  isInGuild := err == nil
+//
+//	   _, err := discordgo.Session.State.Guild(guildID)
+//		  isInGuild := err == nil
 func (s *State) Guild(guildID string) (*Guild, error) {
 	if s == nil {
 		return nil, ErrNilState
@@ -1069,12 +1070,12 @@ func (s *State) OnInterface(se *Session, i interface{}) (err error) {
 		}
 	case *ChannelUpdate:
 		if s.TrackChannels {
-			old, err := s.Channel(t.ID)
-			if err == nil {
+			old, oldErr := s.Channel(t.ID)
+			if oldErr == nil {
 				oldCopy := *old
 				t.BeforeUpdate = &oldCopy
 			}
-			err = s.ChannelAdd(t.Channel)
+			_ = s.ChannelAdd(t.Channel)
 		}
 	case *ChannelDelete:
 		if s.TrackChannels {
@@ -1086,12 +1087,12 @@ func (s *State) OnInterface(se *Session, i interface{}) (err error) {
 		}
 	case *ThreadUpdate:
 		if s.TrackThreads {
-			old, err := s.Channel(t.ID)
-			if err == nil {
+			old, oldErr := s.Channel(t.ID)
+			if oldErr == nil {
 				oldCopy := *old
 				t.BeforeUpdate = &oldCopy
 			}
-			err = s.ChannelAdd(t.Channel)
+			_ = s.ChannelAdd(t.Channel)
 		}
 	case *ThreadDelete:
 		if s.TrackThreads {
