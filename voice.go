@@ -576,7 +576,7 @@ var preferredEncryptionModes = [...]string{
 	"xsalsa20_poly1305",
 }
 
-const defaultEncryptionMode = "xsalsa20_poly1305"
+const defaultEncryptionMode = "aead_xchacha20_poly1305_rtpsize"
 
 func (v *VoiceConnection) selectEncryptionMode() (string, error) {
 	for _, pref := range preferredEncryptionModes {
